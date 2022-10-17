@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring_boot_travel.project.dao.IFoodDAO">
+	<resultMap id="foodResult" type="com.spring_boot_travel.project.model.FoodVO" >
+		<result property="foodNo" column="foodNo"/>
+		<result property="foodName" column="foodName"/>
+		<result property="foodAddress" column="foodAddress"/>
+		<result property="foodTime" column="foodTime"/>
+		<result property="foodCallNumber" column="foodCallNumber"/>
+		<result property="foodImg" column="foodImg"/>
+		<result property="ctgFoodId" column="ctgFoodId"/>
+	</resultMap>
+	
+	<!-- 카테고리별 상품 조회 -->	
+	<select id="listCtgFood" parameterType="string" resultMap="foodResult">
+		SELECT * FROM food WHERE ctgFoodId=#{ctgFoodId} ORDER BY foodNo
+	</select>
+	
+	<!-- 상품 상세 정보 조회 -->
+	<select id="detailViewFood" parameterType="string"  resultType="com.spring_boot_travel.project.model.FoodVO">
+		SELECT * FROM food WHERE foodNo=#{foodNo}
+	</select>
+
+
+</mapper>

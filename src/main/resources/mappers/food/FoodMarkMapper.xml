@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring_boot_travel.project.dao.IFoodMarkDAO">
+
+	<!-- (1) 목록에 동일 상품이 존재하는지 확인 -->
+	<select id="checkFoodInFoodMark" parameterType="hashmap"
+												   resultType="int">
+		SELECT COUNT(*)
+		FROM foodMark
+		WHERE foodNo=#{foodNo} AND memId=#{memId}										   
+	</select>
+	
+	<!-- (2) 관심목록에 동일 맛집이 존재하지 않으면 목록에 추가  -->
+	<insert id="insertFoodMark" parameterType="com.spring_boot_travel.project.model.FoodMarkVO">
+	  	INSERT INTO foodMark (memId, foodNo)
+	  	VALUES(#{memId}, #{foodNo})
+  	</insert>
+	
+	
+	<!-- 관심 목록 출력 -->
+	<select id="foodMarkList" parameterType="string"
+										resultType="com.spring_boot_travel.project.model.FoodMarkVO">
+		SELECT m.foodMarkNo, f.foodNo, f.foodImg, f.foodName, f.foodCallNumber, f.foodTime, m.memId
+		FROM food f, foodMark m
+		WHERE f.foodNo = m.foodNo AND m.memId=#{memId}
+		ORDER BY m.foodNo	
+		
+	</select>
+	
+	<!-- 관심 목록에서 선택한 맛집을 관심목록 테이블에서 삭제 -->
+	<delete id="deleteFoodMark" parameterType="string">
+		DELETE FROM foodMark WHERE foodMarkNo=#{foodMarkNo}
+	</delete>	
+
+</mapper>
+	

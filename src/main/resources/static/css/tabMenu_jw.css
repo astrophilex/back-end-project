@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/*tabMenu.css*/
+
+/*********** TAB MENU ************/
+
+#tabMenuBoxFood {
+	margin:0 auto;
+	width:80%;
+	height:900px;
+	background:white;
+	padding:40px;
+	text-align:center;
+}
+
+#tabMenuFood ul { height:30px; padding:0;}
+
+#tabMenuFood ul li {
+	float:left;
+	list-style:none;
+	width:25%;
+	padding:0;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	margin-top:0px;
+}
+
+
+#tabMenuFood img:hover { cursor:pointer;}
+
+/* 탭 선택 표시 : js 파일에서 addClass()에서 사용하기 위한 클래스 선택자 */
+.selectedItem img {margin-top:-30px;}
+
+
+/*********** TAB CONTENT ********************/
+
+#tabContentFood {
+	width:100%;
+	height:800px;
+	margin-top:20px;
+	border-top:solid 1px #cccccc;
+	border-bottom:solid 1px #cccccc;
+}
+
+/* content의 모든 div 숨김 */
+
+#tabContentFood div {
+	display:none;
+	padding:0;
+	margin-top:20px;
+}
+	
+/* 첫 번째 div 만 보임 */	
+#tabContentFood div:first-child { display:block;}	
+
+#tabContentFood img { width:90%; border:solid 1px #cccccc;}

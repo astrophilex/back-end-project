@@ -1,0 +1,57 @@
+@charset "UTF-8";
+ /* travellogin.css
+  */
+ 
+.login-form{
+ 	box-sizing : border-box;
+ 	font-family: 'Noto Sans KR', sans-serif;
+ }
+ 
+body {
+ margin : 0;
+ background-color : white;
+ }
+
+#loginTitle{
+	text-align: center;
+	color: #095A77;
+}
+
+ .login-form{
+ width : 300px;
+ border : 0;
+ border-radius: 5px;
+ background-color: #eeeff1;
+ padding: 20px;
+ margin-top: 200px;
+ margin-left: 42%;
+ }
+ 
+ .text-field{
+ font-size:14px;
+ margin-bottom : 10px;
+ border: none;
+ border-radius: 5px;
+ padding: 10px;
+ width: 92%;
+ }
+ 
+ .submit-btn{
+ color: #eeeff1;
+ font-size: 14px;
+ background-color: #095A77;
+ margin-bottom: 30px;
+ padding: 10px;
+ border:none;
+ border-radius: 5px;
+ width: 100%
+ }
+ 
+ .links{
+ 	text-align: center;
+ }
+ 
+ .links a {
+ 	font-size: 12px;
+ 	color: #9b9b9b
+ 	}

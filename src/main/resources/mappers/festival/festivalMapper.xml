@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring_boot_travel.project.dao.IFestivalDAO">
+  	<resultMap id="fvResult" type="com.spring_boot_travel.project.model.FestivalVO">
+  	  	<result property="fvNo" column="fvNo"/>
+  		<result property="fvName" column="fvName"/>
+  		<result property="fvDescript" column="fvDescript"/>
+  		<result property="fvDate" column="fvDate"/>
+  		<result property="fvArea" column="fvArea"/>
+  	</resultMap>
+  	
+  	<select id="festivalSearch" parameterType="hashmap" resultMap="fvResult">
+  		SELECT * FROM festival WHERE
+  		 <choose>
+  			<when test="type != null and type.equals('fvName')">
+  				fvName LIKE CONCAT('%', #{keyword}, '%')
+  			</when>
+  			<when test="type != null and type.equals('fvArea')">
+  				fvArea LIKE CONCAT('%', #{keyword}, '%')
+  			</when>
+  		</choose>
+  	
+  	
+  	</select>
+  	
+  </mapper>

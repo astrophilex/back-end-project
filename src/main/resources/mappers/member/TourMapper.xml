@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring_boot_travel.project.dao.ITourDAO">
+  	<resultMap id="tourResult" type="com.spring_boot_travel.project.model.TourVO">
+  		<result property="tourNo" column="tourNo"/>
+  		<result property="tourName" column="tourName"/>
+  		<result property="tourIntro" column="tourIntro"/>
+  
+  	</resultMap>
+  	<select id="searchTour" parameterType="string" resultMap="tourResult">
+  		SELECT * FROM tour WHERE tourName=#{tourName}
+  	
+  	</select>
+  	
+  	<select id="choochunTour1" resultMap="tourResult">
+  		<![CDATA[SELECT t.tourNo, t.tourName, t.tourIntro, COUNT(t.tourNo) 
+		FROM tour t, choochun c,member m
+		WHERE m.memId=c.memId and c.tourNo=t.tourNo and m.memAge>=0 and m.memAge<20
+		GROUP BY t.tourNo
+		ORDER BY COUNT(m.memId);]]>
+  	
+  	</select>
+  	<select id="choochunTour2" resultMap="tourResult">
+  		<![CDATA[SELECT t.tourNo, t.tourName, t.tourIntro
+		FROM tour t, choochun c,member m
+		WHERE m.memId=c.memId and c.tourNo=t.tourNo and m.memAge>=20 and m.memAge<30
+		GROUP BY t.tourNo
+		ORDER BY COUNT(m.memId);]]>
+  	
+  	</select>
+  	<select id="choochunTour3" resultMap="tourResult">
+  		<![CDATA[SELECT t.tourNo, t.tourName, t.tourIntro
+		FROM tour t, choochun c,member m
+		WHERE m.memId=c.memId and c.tourNo=t.tourNo and m.memAge>=30 and m.memAge<40
+		GROUP BY t.tourNo
+		ORDER BY COUNT(m.memId);]]>
+  	
+  	</select>
+  	<select id="choochunTour4" resultMap="tourResult">
+  		<![CDATA[SELECT t.tourNo, t.tourName, t.tourIntro, COUNT(t.tourNo) 
+		FROM tour t, choochun c,member m
+		WHERE m.memId=c.memId and c.tourNo=t.tourNo and m.memAge>=40 and m.memAge<50
+		GROUP BY t.tourNo
+		ORDER BY COUNT(m.memId);]]>
+  	
+  	</select>
+  	<select id="choochunTour5" resultMap="tourResult">
+  		<![CDATA[SELECT t.tourNo, t.tourName, t.tourIntro, COUNT(t.tourNo) 
+		FROM tour t, choochun c,member m
+		WHERE m.memId=c.memId and c.tourNo=t.tourNo and m.memAge>=50
+		GROUP BY t.tourNo
+		ORDER BY COUNT(m.memId);]]>
+  	
+  	</select>
+  
+  </mapper>
